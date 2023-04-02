@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Web Editörü</title>
+  <link rel="shortcut icon" href="https://ktbmyo.dpu.edu.tr/app/views/panel/images/favicon.ico" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 mt-2">
+        <form class="needs-validation" novalidate>
+          <h4>İletişim Bilgileri</h4>
+          <div class="row">
+            <div class="col">
+              <div class="form-floating mb-3 mt-3">
+                <input type="text" class="form-control" id="ad" name="isim" placeholder="anonymous" required>
+                <label for="ad">İsminiz.</label>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="form-floating mb-3 mt-3">
+                <input type="text" class="form-control" id="soyad" name="soyisim" placeholder="anonymous" required>
+                <label for="soyad">Soyisminiz.</label>
+              </div>
+            </div>
+
+            <div>
+              <div class="form-floating mb-3 mt-3">
+                <input type="text" class="form-control" id="mail" name="e-mail" placeholder="anonymous" required />
+                <label for="mail">E-posta Adresiniz</label>
+              </div>
+
+              <div class="form-floating mb-3 mt-3">
+                <input type="password" class="form-control" id="psw" placeholder="anonymous" required>
+                <label for="psw">Şifreniniz.</label>
+              </div>
+
+              <div class="form-check form-switch">
+                <input type="checkbox" class="form-check-input" role="switch" id="sw" required />
+                <label for="sw" class="form-check-label">Başvuru bilgilerim doğrudur, onaylıyorum.</label>
+              </div>
+
+              <h4>Tercih Ettiğiniz Pozisyonlar Nelerdir?</h4> <!-- Chech Box-->
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" value="1" id="pos1" />
+                <label for="pos1" class="form-check-label">Beyaz Yaka</label>
+              </div>
+
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" value="2" id="pos2" />
+                <label for="pos2" class="form-check-label">Mavi Yaka</label>
+              </div>
+
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" value="3" id="pos3" checked disabled />
+                <!--chechked=seçilmiş; diasabled= devre dışı bırakılmış -->
+                <label for="3" class="form-check-label">Ne iş olsa Yaparım :D</label>
+              </div>
+              <br />
+              <h4>Cinsiyetiniz Nedir?</h4> <!-- Radio Button-->
+              <div class="form-check-inline">
+                <input type="radio" class="form-check-input" name="cns" value="E" id="cins1" required />
+                <label for="cins1" class="form-check-label">Erkek</label>
+              </div>
+
+              <div class="form-check-inline">
+                <input type="radio" class="form-check-input" name="cns" value="K" id="cins2" required />
+                <label for="cins2" class="form-check-label">Kadın</label>
+              </div>
+              <br /> <br />
+
+              <h4><label for="rng1" class="form-label">Kaç Yıllık İş Tecrübeniz Var?</label></h4>
+              </p><input type="range" class="form-range" id="rng1" min="0" max="10" required />
+              <br />
+
+              <h4>Hangi Şehirde Çalışmak İstiyorsunuz?</h4>
+              <div class="form-group">
+                <label for="sehir">Şehir seçin:</label>
+                <select class="form-control form-control-lg ps-4" id="sehir" onchange="ilceleriListele()" required>
+                  <option value="">-- Şehir seçin --</option>
+                  <option value="34">İstanbul</option>
+                  <option value="35">İzmir</option>
+                  <option value="06">Ankara</option>
+                  <option value="10">Balıkesir</option>
+                </select>
+              </div>
+        </form>
+        <form>
+          <div class="form-group">
+            <label for="ilceleriListele">İlçe seçin:</label>
+            <select class="form-control form-control-lg ps-4" id="ilce" required>
+
+            </select>
+          </div>
+        </form>
+
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+    crossorigin="anonymous"></script>
+
+  <!-- Validation çalışması için  bootstrap dokümanlarında mevcut. https://getbootstrap.com/docs/5.0/forms/validation/ -->
+  <script>// Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+      'use strict'
+
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.querySelectorAll('.needs-validation')
+
+      // Loop over them and prevent submission
+      Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+          form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+          }, false)
+        })
+    })()
+  </script>
+
+  <!--JQuery ile seçilen Şehre göre ilçelerinin listenmesi-->
+  <script>
+    function ilceleriListele() {
+      var sehir = document.getElementById("sehir").value;
+      var ilceler = getIlceler(sehir);
+      var ilcelerListesi = document.getElementById("ilce");
+      ilcelerListesi.innerHTML = "";
+      for (var i = 0; i < ilceler.length; i++) {
+        var ilce = ilceler[i];
+        var option = document.createElement("option");
+        option.text = ilce;
+        ilcelerListesi.add(option);
+      }
+    }
+    function getIlceler(sehir) {
+      var ilceler = [];
+      switch (sehir) {
+        case "34":
+          ilceler = ["Beşiktaş", "Kadıköy", "Üsküdar", "Kartal", "Bakırköy", "Beylikdüzü", "Şişli"];
+          break;
+        case "06":
+          ilceler = ["Çankaya", "Keçiören", "Mamak", "Altındağ", "Yenimahalle", "Etimesgut", "Sincan"];
+          break;
+        case "35":
+          ilceler = ["Bornova", "Buca", "Karşıyaka", "Konak", "Gaziemir", "Balçova", "Çiğli"];
+          break;
+        case "10":
+          ilceler = ["Ayvalık", "Altıeylül", "Karesi", "Bandırma", "Edremit", "Erdek", "Burhaniye", "Marmara", "Susurluk"];
+          break;
+      }
+      return ilceler;
+    }
+  </script>
+</body>
+
+</html>
